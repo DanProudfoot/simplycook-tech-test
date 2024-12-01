@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import { withPigment } from "@pigment-css/nextjs-plugin";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig = withPigment({
+	/* config options here */
+});
 
 export default nextConfig;
