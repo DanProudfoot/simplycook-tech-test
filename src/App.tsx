@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useRecipes } from "@/queries/recipes";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { data } = useRecipes();
 
-  return (
+  console.log(data);
 
   return <></>;
 }
