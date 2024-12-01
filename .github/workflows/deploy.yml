@@ -43,10 +43,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run build
+        run: pnpm run build --base "${{ steps.pages.outputs.base_url }}/"
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
