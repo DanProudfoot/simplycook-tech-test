@@ -9,6 +9,11 @@ const nextConfig = withPigment({
 				hostname: "media.simplycook.com",
 				pathname: "/uploads/media/**",
 			},
+			{
+				protocol: "https",
+				hostname: "simplycook.imgix.net",
+				pathname: "/recipes/**",
+			},
 		],
 	},
 });
