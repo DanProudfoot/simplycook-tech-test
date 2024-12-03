@@ -1,3 +1,5 @@
+"use client";
+
 import { CardBack } from "@/app/components/Card/CardBack";
 import { CardFlip } from "@/app/components/Card/CardFlip";
 import { CardFront } from "@/app/components/Card/CardFront";

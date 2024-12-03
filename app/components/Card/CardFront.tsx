@@ -1,4 +1,5 @@
-import { CardBase } from "@/app/components/Card/CardCommon";
+"use client";
+
 import { BodySBold, DetailText } from "@/app/components/Text/Text";
 import type { RecipeType } from "@/types/recipes";
 import { css, styled } from "@pigment-css/react";
@@ -12,7 +13,7 @@ export const CardFront = ({
   shortDescription,
 }: CardFrontProps) => {
   return (
-    <CardBase className={cardFrontStyles}>
+    <CardBase>
       <CardImage draggable={false}>
         <Image src={image} alt="" width={390} height={262} />
       </CardImage>
@@ -24,7 +25,7 @@ export const CardFront = ({
   );
 };
 
-const cardFrontStyles = css`
+const CardBase = styled.div`
   background-color: var(--colour-base-subtle);
   padding: 8px;
   padding-bottom: 12px;
@@ -32,6 +33,17 @@ const cardFrontStyles = css`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  grid-area: 1 / 1;
+
+  user-select: none;
 `;
 
 const CardImage = styled.div`

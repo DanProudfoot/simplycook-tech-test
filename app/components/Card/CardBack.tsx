@@ -1,4 +1,5 @@
-import { CardBase } from "@/app/components/Card/CardCommon";
+"use client";
+
 import { BodySBold, DetailText } from "@/app/components/Text/Text";
 import type { RecipeType } from "@/types/recipes";
 import { css, styled } from "@pigment-css/react";
@@ -16,34 +17,64 @@ export const CardBack = ({
   topReview,
 }: CardBackProps) => {
   return (
-    <CardBase className={cardBackStyles}>
-      <BackGridItem className={backItemFullWidth}>
-        <BodySBold className={cardBackTextStyles}>
+    <CardWrapper>
+      <BackGridItem sx={{ gridColumn: "1 / span 2" }}>
+        <BodySBold
+          sx={{ color: "var(--colour-base-subtle)", textAlign: "center" }}
+        >
           Takes only {formatDuration({ minutes: Number(cookingTime) })}!
         </BodySBold>
       </BackGridItem>
       <BackGridItem>
-        <DetailText className={cardBackTextStyles}>Average rating</DetailText>
-        <BodySBold className={`${cardBackTextStyles} ${backTextLarge}`}>
+        <DetailText
+          sx={{ color: "var(--colour-base-subtle)", textAlign: "center" }}
+        >
+          Average rating
+        </DetailText>
+        <BodySBold
+          sx={{
+            color: "var(--colour-base-subtle)",
+            textAlign: "center",
+            fontSize: "1.3rem",
+          }}
+        >
           {averageRating} ⭐️
         </BodySBold>
       </BackGridItem>
       <BackGridItem>
-        <DetailText className={cardBackTextStyles}>Spiciness</DetailText>
+        <DetailText
+          sx={{ color: "var(--colour-base-subtle)", textAlign: "center" }}
+        >
+          Spiciness
+        </DetailText>
 
-        <BodySBold className={`${cardBackTextStyles} ${backTextLarge}`}>
+        <BodySBold
+          sx={{
+            color: "var(--colour-base-subtle)",
+            textAlign: "center",
+            fontSize: "1.3rem",
+          }}
+        >
           {chilli > 0 ? Array(chilli).fill("🌶️") : "❄️"}
         </BodySBold>
       </BackGridItem>
-      <BackGridItem className={backItemFullWidth}>
-        <DetailText className={cardBackTextStyles}>Top user review</DetailText>
-        <BodySBold className={cardBackTextStyles}>"{topReview}"</BodySBold>
+      <BackGridItem sx={{ gridColumn: "1 / span 2" }}>
+        <DetailText
+          sx={{ color: "var(--colour-base-subtle)", textAlign: "center" }}
+        >
+          Top user review
+        </DetailText>
+        <BodySBold
+          sx={{ color: "var(--colour-base-subtle)", textAlign: "center" }}
+        >
+          "{topReview}"
+        </BodySBold>
       </BackGridItem>
-    </CardBase>
+    </CardWrapper>
   );
 };
 
-const cardBackStyles = css`
+const CardWrapper = styled.div`
   background-color: var(--colour-brand-green);
 
   display: grid;
@@ -51,6 +82,17 @@ const cardBackStyles = css`
   grid-template-rows: repeat(3, auto);
 
   transform: rotateY(180deg);
+
+  cursor: pointer;
+
+  border-radius: 10px;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  grid-area: 1 / 1;
+
+  user-select: none;
 `;
 
 const BackGridItem = styled.div`
@@ -61,17 +103,4 @@ const BackGridItem = styled.div`
   justify-content: center;
 
   gap: 4px;
-`;
-
-const cardBackTextStyles = css`
-  color: var(--colour-base-subtle);
-  text-align: center;
-`;
-
-const backItemFullWidth = css`
-  grid-column: span 2;
-`;
-
-const backTextLarge = css`
-  font-size: 1.3rem;
 `;
