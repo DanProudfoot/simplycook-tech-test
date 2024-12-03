@@ -44,10 +44,5 @@ globalCss`
     text-wrap: balance;
   }
 
-  /*
-    9. Create a root stacking context
-  */
-  #root, #__next {
-    isolation: isolate;
-  }
+
 `;

@@ -1,3 +1,4 @@
+import { Card } from "@/app/components/Card";
 import { Carousel } from "@/app/components/Carousel";
 import type { RecipeType } from "@/types/recipes";
 
@@ -12,5 +13,11 @@ export default async function Home() {
     (item) => !item.allergens.some((allergen) => FILTERS.includes(allergen))
   );
 
-  return <Carousel recipes={filteredByAllergen.slice(0, 10)} />;
+  return (
+    <Carousel>
+      {filteredByAllergen.slice(0, 10).map((item) => (
+        <Card recipe={item} key={item.id} />
+      ))}
+    </Carousel>
+  );
 }

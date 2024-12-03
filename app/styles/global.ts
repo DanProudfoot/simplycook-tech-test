@@ -5,6 +5,8 @@ import { globalCss } from "@pigment-css/react";
 globalCss`
   :root {
     --colour-brand-green: #45A562;
+    --colour-base-subtle: #fff;
+
     --colour-text-strong: #000000;
     --colour-text-detail: #414042;
 
