@@ -32,7 +32,7 @@ export const CardBack = ({
         <DetailText className={cardBackTextStyles}>Spiciness</DetailText>
 
         <BodySBold className={`${cardBackTextStyles} ${backTextLarge}`}>
-          {Array(chilli).fill("🌶️")}
+          {chilli > 0 ? Array(chilli).fill("🌶️") : "❄️"}
         </BodySBold>
       </BackGridItem>
       <BackGridItem className={backItemFullWidth}>
@@ -73,5 +73,5 @@ const backItemFullWidth = css`
 `;
 
 const backTextLarge = css`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 `;

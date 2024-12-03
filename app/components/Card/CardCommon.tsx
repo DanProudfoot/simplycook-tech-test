@@ -9,12 +9,6 @@ export const CardBase = styled.div`
   transform-style: preserve-3d;
 
   grid-area: 1 / 1;
-`;
 
-export const CardImage = styled.div`
-  img {
-    border-radius: 5px;
-    height: auto;
-    object-fit: cover;
-  }
+  user-select: none;
 `;
