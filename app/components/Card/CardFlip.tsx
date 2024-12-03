@@ -52,7 +52,8 @@ const variants: Variants = {
 };
 
 export const CardFlip = ({ children, id }: CardFlipProps) => {
-  const { cardFlippedId, setCardFlippedId } = use(CardFlipStateContext);
+  const { cardFlippedId, setCardFlippedId, isDragging } =
+    use(CardFlipStateContext);
 
   const isSelected = cardFlippedId === id;
 
@@ -62,12 +63,14 @@ export const CardFlip = ({ children, id }: CardFlipProps) => {
       initial="initial"
       whileHover={isSelected ? "flipped" : "hover"}
       animate={isSelected ? "flipped" : "initial"}
-      onClick={() =>
-        setCardFlippedId((value) => {
-          if (value === id) return null;
-          return id;
-        })
-      }
+      onClick={() => {
+        if (!isDragging) {
+          setCardFlippedId((value) => {
+            if (value === id) return null;
+            return id;
+          });
+        }
+      }}
     >
       {children}
     </CardContainer>
