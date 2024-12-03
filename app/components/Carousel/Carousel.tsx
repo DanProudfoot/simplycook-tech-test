@@ -3,16 +3,31 @@
 import { CardFlipStateProvider } from "@/app/contexts/CardFlipState";
 
 import { styled } from "@pigment-css/react";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 interface CarouselProps {
   children: React.ReactNode;
 }
 
 export const Carousel = ({ children }: CarouselProps) => {
+  const containerRef = useRef(null);
+  const inViewRef = useRef(null);
+  const isInView = useInView(inViewRef, { root: containerRef });
+
+  console.log(isInView);
+
   return (
     <CardFlipStateProvider>
-      <Container>
-        <Track>{children}</Track>
+      <Container ref={containerRef}>
+        <Track
+          drag="x"
+          dragConstraints={{ right: 0 }}
+          onDrag={(e) => e.stopPropagation()}
+        >
+          {children}
+          <div ref={inViewRef} />
+        </Track>
       </Container>
     </CardFlipStateProvider>
   );
@@ -20,11 +35,13 @@ export const Carousel = ({ children }: CarouselProps) => {
 
 const Container = styled.div`
   max-width: 1280px;
+  padding: 64px 32px;
+  overflow-x: clip;
 `;
 
-const Track = styled.div`
+const Track = styled(motion.div)`
   display: flex;
-  gap: 22px;
+  gap: 6px;
   width: max-content;
 
   > * {
