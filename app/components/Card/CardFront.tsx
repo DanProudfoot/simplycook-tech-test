@@ -53,5 +53,6 @@ const CardImage = styled.div`
     object-fit: cover;
 
     user-select: none;
+    pointer-events: none;
   }
 `;

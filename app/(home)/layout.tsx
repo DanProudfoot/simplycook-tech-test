@@ -2,6 +2,7 @@ import { styled } from "@pigment-css/react";
 import "@/app/styles/reset";
 import "@/app/styles/global";
 
+import Providers from "@/app/contexts/QueryProvider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,7 +15,11 @@ export default function CarouselLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <CenteredLayout>{children}</CenteredLayout>;
+  return (
+    <Providers>
+      <CenteredLayout>{children}</CenteredLayout>
+    </Providers>
+  );
 }
 
 const CenteredLayout = styled.div`
