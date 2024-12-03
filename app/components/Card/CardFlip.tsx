@@ -79,7 +79,6 @@ export const CardFlip = ({ children, id }: CardFlipProps) => {
 
 const CardContainer = styled(motion.article)`
   display: grid;
-  height: 100%;
 
   border-radius: 10px;
 

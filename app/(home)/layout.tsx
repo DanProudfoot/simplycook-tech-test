@@ -23,7 +23,8 @@ export default function CarouselLayout({
 }
 
 const CenteredLayout = styled.div`
-  display: grid;
-  place-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
 `;
